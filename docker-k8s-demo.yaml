@@ -1,0 +1,24 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: testit-01-deployment
+spec:
+  replicas: 4
+  #number of replicas generated
+  selector:
+    #assigns labels to the pods for future selection
+    matchLabels:
+      app: testit
+      version: v01
+  template:
+    metadata:
+      labels:
+        app: testit
+        version: v01
+    spec:
+      containers:
+        - name: techprimers-cluster
+          image: imouahrani/docker-demo
+          ports:
+            - containerPort: 80
